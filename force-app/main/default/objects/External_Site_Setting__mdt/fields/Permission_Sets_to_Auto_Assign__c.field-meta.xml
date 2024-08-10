@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomField xmlns="http://soap.sforce.com/2006/04/metadata">
+    <fullName>Permission_Sets_to_Auto_Assign__c</fullName>
+    <description>A comma-separated list of Permission Set API Names to auto-assign to new users (e.g. External_User_Base_Access)</description>
+    <fieldManageability>DeveloperControlled</fieldManageability>
+    <inlineHelpText>A comma-separated list of Permission Set API Names to auto-assign to new users (e.g. External_User_Base_Access)</inlineHelpText>
+    <label>Permission Sets to Auto Assign</label>
+    <length>32768</length>
+    <type>LongTextArea</type>
+    <visibleLines>3</visibleLines>
+</CustomField>

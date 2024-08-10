@@ -1,37 +1,90 @@
 <template>
     <lightning-card title="Get Public URL" icon-name="action:web_link">
 
+        <!-- ACTIONS -->
         <div slot="actions">
-            <lightning-button
-                label="Go to URL"
-                variant="neutral"
+            <lightning-button-stateful
+                label-when-off="Copy"
+                label-when-on="Copied!"
+                label-when-hover="Copied!"
+                icon-name-when-off="utility:copy"
+                icon-name-when-on="utility:check"
+                icon-name-when-hover="utility:check"
+                onclick={handleCopyUrl}
+                selected={urlIsCopied}
+                class="slds-m-left_x-small"
+            ></lightning-button-stateful>
+            <lightning-button-icon-stateful
+                icon-name="utility:filterList"
+                alternative-text="Apply Filters"
+                title="Apply Filters"
+                selected={showFilterPanel}
+                onclick={handleToggleFilterPanel}
+                class="slds-m-left_x-small"
+            ></lightning-button-icon-stateful>
+            <lightning-button-icon
                 icon-name="utility:new_window"
-                icon-position="right"
+                alternative-text="Go to URL"
+                title="Go to URL"
                 onclick={handleGoToUrl}
-                disabled={isLoading}
-            ></lightning-button>
+                class="slds-m-left_x-small"
+            ></lightning-button-icon>
         </div>
 
-        <div class="filter-panel">
-            <lightning-checkbox-group 
-                name="Days of Week"
-                label="Days of Week"
-                options={daysOfWeek}
-                value={filteredDays}
-                onchange={handleDaysOfWeekChange}
-            ></lightning-checkbox-group>
-            <lightning-input 
-                type="number" 
-                name="Age" 
-                value={filteredAge} 
-                onchange={handleAgeChange} 
-                label="Age"
-            ></lightning-input>
+        <!-- URL DISPLAY -->
+        <div lwc:if={baseUrl} class="url-display slds-var-m-around_small">
+            <lightning-textarea label="Public URL" value={url} readonly></lightning-textarea>
         </div>
 
-        <template lwc:if={baseUrl}>
-            Public Registration URL: {url}
-        </template>
+        <!-- FILTER PANEL -->
+        <div lwc:if={showFilterPanel} class="filter-panel slds-var-m-around_small">
+            <lightning-layout>
+                <lightning-layout-item flexibility="auto" padding="around-small">
+                    <lightning-combobox
+                        name="sessions"
+                        label="Session"
+                        value={filteredSession}
+                        placeholder="Select Session"
+                        options={sessionOptions}
+                        onchange={handleSessionChange}
+                    ></lightning-combobox>
+                    <lightning-input 
+                        type="date" 
+                        name="Start Date" 
+                        label="Enter a date" 
+                        onchange={handleStartDateChange}
+                    ></lightning-input>
+                    <lightning-input 
+                        type="date" 
+                        name="End Date" 
+                        label="Enter a date" 
+                        onchange={handleEndDateChange}
+                    ></lightning-input>
+                </lightning-layout-item>
+
+                <lightning-layout-item flexibility="auto" padding="around-small">
+                    <lightning-checkbox-group 
+                        name="Days of Week"
+                        label="Days of Week"
+                        options={daysOfWeek}
+                        value={filteredDays}
+                        onchange={handleDaysOfWeekChange}
+                    ></lightning-checkbox-group>
+                </lightning-layout-item>
+                
+                <lightning-layout-item flexibility="auto" padding="around-small">
+                    <lightning-input 
+                        type="number" 
+                        name="Age" 
+                        value={filteredAge} 
+                        onchange={handleAgeChange} 
+                        label="Age"
+                    ></lightning-input>
+                </lightning-layout-item>
+                
+            </lightning-layout>
+        </div>
+
     </lightning-card>
 
 </template>

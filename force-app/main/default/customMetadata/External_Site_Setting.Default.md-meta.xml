@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomMetadata xmlns="http://soap.sforce.com/2006/04/metadata" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema">
+    <label>Default</label>
+    <protected>false</protected>
+    <values>
+        <field>Hour_Offset_from_GMT__c</field>
+        <value xsi:type="xsd:double">4.0</value>
+    </values>
+    <values>
+        <field>Permission_Sets_to_Auto_Assign__c</field>
+        <value xsi:type="xsd:string">Traction_Rec_Community_User,AG_External_User_Base_Access,Traction_Apex_Access</value>
+    </values>
+    <values>
+        <field>Profile_Name__c</field>
+        <value xsi:type="xsd:string">AG Customer Community Login User</value>
+    </values>
+    <values>
+        <field>Registration_Page_Path__c</field>
+        <value xsi:type="xsd:string">/s/registration</value>
+    </values>
+    <values>
+        <field>Site_Name__c</field>
+        <value xsi:type="xsd:string">Asphalt Green Community</value>
+    </values>
+    <values>
+        <field>Site_URL__c</field>
+        <value xsi:type="xsd:string">https://asphaltgreen--uat.sandbox.my.site.com</value>
+    </values>
+</CustomMetadata>
