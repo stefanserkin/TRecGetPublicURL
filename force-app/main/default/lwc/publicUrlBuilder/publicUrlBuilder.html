@@ -1,0 +1,37 @@
+<template>
+    <lightning-card title="Get Public URL" icon-name="action:web_link">
+
+        <div slot="actions">
+            <lightning-button
+                label="Go to URL"
+                variant="neutral"
+                icon-name="utility:new_window"
+                icon-position="right"
+                onclick={handleGoToUrl}
+                disabled={isLoading}
+            ></lightning-button>
+        </div>
+
+        <div class="filter-panel">
+            <lightning-checkbox-group 
+                name="Days of Week"
+                label="Days of Week"
+                options={daysOfWeek}
+                value={filteredDays}
+                onchange={handleDaysOfWeekChange}
+            ></lightning-checkbox-group>
+            <lightning-input 
+                type="number" 
+                name="Age" 
+                value={filteredAge} 
+                onchange={handleAgeChange} 
+                label="Age"
+            ></lightning-input>
+        </div>
+
+        <template lwc:if={baseUrl}>
+            Public Registration URL: {url}
+        </template>
+    </lightning-card>
+
+</template>
