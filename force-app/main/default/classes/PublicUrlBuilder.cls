@@ -13,21 +13,17 @@ public with sharing class PublicUrlBuilder {
     private String recordId;
 
     public PublicUrlBuilder(String objectApiName, String recordId) {
-        System.debug('::::: obj --> ' + objectApiName);
-        System.debug('::::: recId --> ' + recordId);
         this.objectApiName = objectApiName;
         this.recordId = recordId;
     }
 
     public String getUrl() {
         String url = getSiteSetting().Site_URL__c + REGISTRATION_PAGE_URL;
-        System.debug(':::: base url --> ' + url);
         return hasFilters() ? url + '?' + getRecordFilter() : url;
     }
 
     private Boolean hasFilters() {
         Boolean filterHas = this.objectApiName != null && this.recordId != null;
-        System.debug('::::: has filters? --> ' + filterHas);
         return this.objectApiName != null && this.recordId != null;
     }
 
@@ -35,7 +31,6 @@ public with sharing class PublicUrlBuilder {
         if (siteSetting == null) {
             siteSetting = External_Site_Setting__mdt.getInstance(SITE_SETTING_NAME);
         }
-        System.debug(':::: siteSetting --> ' + siteSetting);
         return siteSetting;
     }
 
@@ -49,7 +44,6 @@ public with sharing class PublicUrlBuilder {
         } else if (this.objectApiName == OBJECT_COURSE_SESSION) {
             filter += 'courseSession=' + recordName;
         }
-        System.debug(':::: filter --> ' + filter);
         return filter;
     }
 
