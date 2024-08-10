@@ -78,15 +78,17 @@ export default class PublicUrlBuilder extends NavigationMixin(LightningElement) 
         this.wiredSessions = result;
         if (result.data) {
             this.availableSessions = result.data;
-            console.table(this.availableSessions);
             this.error = undefined;
-            this.availableSessions = result.data;
             this.isLoading = false;
         } else if (result.error) {
             this.availableSessions = undefined;
             this.error = result.error;
             this.isLoading = false;
         }
+    }
+
+    get hasNoAvailableSessions() {
+        return !this.availableSessions || this.availableSessions.length === 0;
     }
 
     get url() {

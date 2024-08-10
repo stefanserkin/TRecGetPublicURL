@@ -1,3 +1,6 @@
+/***********************************************
+ * @date 2024
+ ***********************************************/
 public with sharing class PublicUrlBuilderController {
 
     private static final String SESSION_STATUS_AVAILABLE = 'Available';

@@ -47,17 +47,18 @@
                         placeholder="Select Session"
                         options={sessionOptions}
                         onchange={handleSessionChange}
+                        disabled={hasNoAvailableSessions}
                     ></lightning-combobox>
                     <lightning-input 
                         type="date" 
                         name="Start Date" 
-                        label="Enter a date" 
+                        label="Start Date" 
                         onchange={handleStartDateChange}
                     ></lightning-input>
                     <lightning-input 
                         type="date" 
                         name="End Date" 
-                        label="Enter a date" 
+                        label="End Date" 
                         onchange={handleEndDateChange}
                     ></lightning-input>
                 </lightning-layout-item>

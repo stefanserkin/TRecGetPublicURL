@@ -5,4 +5,5 @@
 // You can also execute the entire file by running the command:
 //     SFDX: Execute Anonymous Apex with Editor Contents
 
-String str = ''
+TREX1__Course_Session__c courseSession = [SELECT Id, Name FROM TREX1__Course_Session__c LIMIT 1];
+System.debug('::::: courseSession type --> ' + courseSession.getSObjectType());
