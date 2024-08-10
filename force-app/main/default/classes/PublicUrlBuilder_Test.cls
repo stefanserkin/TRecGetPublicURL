@@ -74,7 +74,23 @@ private class PublicUrlBuilder_Test {
             Assert.fail('Should have received an exception for the unsupported object name');
         } catch (Exception e) {
             Assert.areEqual('PublicUrlBuilder.PublicUrlBuilderException', e.getTypeName(), 'Should have received a PublicUrlBuilderException');
-            Assert.areEqual('Unsupported object type: ' + unsupportedObject, e.getMessage(), 'Should have received an exception for the unsupported object type');
+            Assert.areEqual(PublicUrlBuilder.OBJECT_NOT_SUPPORTED_EXCEPTION + unsupportedObject, e.getMessage(), 'Should have received an exception for the unsupported object type');
+        }
+        Test.stopTest();
+    }
+
+    @IsTest
+    static void testGetPublicUrlWithoutResults() {
+        String objectApiName = 'TREX1__Program__c';
+        Id fakeId = TestUtility.getFakeId(TREX1__Program__c.SObjectType);
+        
+        Test.startTest();
+        try {
+            String url = new PublicUrlBuilder(objectApiName, fakeId).getUrl();
+            Assert.fail('Should have received an exception for the fake id');
+        } catch (Exception e) {
+            Assert.areEqual('PublicUrlBuilder.PublicUrlBuilderException', e.getTypeName(), 'Should have received a PublicUrlBuilderException');
+            Assert.areEqual(PublicUrlBuilder.RECORD_NOT_FOUND_EXCEPTION + fakeId, e.getMessage(), 'Should have received an exception for the unfound record');
         }
         Test.stopTest();
     }

@@ -16,18 +16,14 @@ public with sharing class PublicUrlBuilderController {
 
     @AuraEnabled(cacheable=true)
     public static List<TREX1__Session__c> getAvailableSessions() {
-        try {
-            return [
-                SELECT Id, Name 
-                  FROM TREX1__Session__c
-                 WHERE TREX1__Status__c = :SESSION_STATUS_AVAILABLE
-                  WITH USER_MODE
-                 ORDER BY TREX1__Start_Date__c DESC
-                 LIMIT 10000
-            ];
-        } catch (Exception e) {
-            throw new AuraHandledException(e.getMessage());
-        }
+        return [
+            SELECT Id, Name 
+              FROM TREX1__Session__c
+             WHERE TREX1__Status__c = :SESSION_STATUS_AVAILABLE
+              WITH USER_MODE
+             ORDER BY TREX1__Start_Date__c DESC
+             LIMIT 10000
+        ];
     }
 
 }
